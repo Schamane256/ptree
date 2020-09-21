@@ -1,15 +1,16 @@
-hptree=ptree.h
-cptree=ptree.c
+Program = ptree
+hmain = main.h
+cmain = main.c
 
-CC=gcc
-CFLAG= -g -Wall -Wextra -o
+CC = gcc
+CFLAG = -ggdb -Og -pipe -Wall -Wextra -o
 
-all: cptree
+all: cmain clean
 
-hptree:
-	$(CC) $(hptree)
-cptree:hptree
-	$(CC) $(cptree) $(CFLAG) ptree
+hmain:
+	$(CC) $(hmain)
+cmain: hmain
+	$(CC) $(cmain) $(CFLAG) $(Program)
 
 clean:
-	rm *.a;rm *.gch;rm *.o;rm *~
+	rm *.gch
